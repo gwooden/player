@@ -7,13 +7,6 @@ from db.models.player import Player
 
 app = FastAPI()
 
-@app.on_event("startup")
-async def startup():
-    # create db tables
-    async with engine.begin() as conn:
-        await conn.run_sync(Base.metadata.drop_all)
-        await conn.run_sync(Base.metadata.create_all)
-
 @app.post("/players")
 async def create_player(firstName: str, lastName: str, number: int):
     async with async_session() as session:
