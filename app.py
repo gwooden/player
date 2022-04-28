@@ -1,6 +1,5 @@
 from typing import List,Optional
 from fastapi import FastAPI
-
 from db.config import engine, Base, async_session
 from db.dals.player_dal import PlayerDAL
 from db.models.player import Player
